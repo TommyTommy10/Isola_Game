@@ -2,10 +2,11 @@
 import Phaser from 'https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js';
 
 // Importa le scene del tuo gioco
-import BootScene from './scenes/BootScene.js';
-import MapScene from './scenes/MapScene.js';
+// I percorsi sono stati corretti per la struttura: Isola_Game/src/scene/BootScene.js
+import BootScene from './scene/BootScene.js'; // 'BootScene.js' è dentro la cartella 'scene', che è nella stessa cartella di 'main.js' (cioè 'src')
+import MapScene from './scene/MapScene.js';   // Idem per 'MapScene.js'
 // Qui importerai le altre scene dei minigiochi man mano che le creerai, es:
-// import Minigame1Scene from './scenes/Minigame1Scene.js';
+// import Minigame1Scene from './scene/Minigame1Scene.js';
 
 // Configurazione base del gioco
 const config = {
