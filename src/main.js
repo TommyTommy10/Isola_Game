@@ -1,5 +1,5 @@
 // Importa Phaser direttamente dal CDN (Content Delivery Network)
-import Phaser from 'https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js';
+import Phaser from 'https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js.';
 
 // Importa le scene del tuo gioco
 // I percorsi sono stati corretti per la struttura: Isola_Game/src/scene/BootScene.js
