@@ -1,31 +1,33 @@
-import Phaser from 'phaser';
+// Non usiamo più "import Phaser from 'phaser';" qui
+// Phaser sarà disponibile globalmente come "Phaser"
 
 class MapScene extends Phaser.Scene {
     constructor() {
         super('MapScene');
         this.player = null;
         this.cursors = null;
-        this.moveSpeed = 200; // Velocità di movimento del giocatore
+        this.wasd = null;
+        this.moveSpeed = 200;
     }
 
     create() {
-        // Sfondo della mappa (per ora un colore solido)
-        // Quando avrai un'immagine, userai: this.add.image(0, 0, 'sfondoMappa').setOrigin(0);
-        this.add.rectangle(0, 0, this.sys.game.config.width, this.sys.game.config.height, 0x87CEEB)
-            .setOrigin(0); // Un bel blu cielo come sfondo
+        this.add.rectangle(
+            0,
+            0,
+            this.sys.game.config.width,
+            this.sys.game.config.height,
+            0x87CEEB
+        ).setOrigin(0, 0);
 
-        // Il nostro "giocatore" (un cerchio per ora)
-        // Quando avrai uno spritesheet, userai: this.add.sprite(X, Y, 'giocatore');
         this.player = this.add.circle(
-            this.cameras.main.width / 2, // Inizia al centro orizzontale
-            this.cameras.main.height / 2, // Inizia al centro verticale
-            20, // Raggio del cerchio
-            0xFF0000 // Colore rosso
+            this.cameras.main.width / 2,
+            this.cameras.main.height / 2,
+            20,
+            0xFF0000
         );
-        this.physics.add.existing(this.player); // Aggiunge la fisica al giocatore
-        this.player.body.setCollideWorldBounds(true); // Non può uscire dallo schermo
+        this.physics.add.existing(this.player);
+        this.player.body.setCollideWorldBounds(true);
 
-        // Controlli da tastiera (frecce o WASD)
         this.cursors = this.input.keyboard.createCursorKeys();
         this.wasd = {
             up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
@@ -34,7 +36,6 @@ class MapScene extends Phaser.Scene {
             right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)
         };
 
-        // Testo di istruzioni
         this.add.text(10, 10, 'Muoviti con WASD o Frecce', {
             fontSize: '24px',
             fill: '#ffffff'
@@ -42,10 +43,8 @@ class MapScene extends Phaser.Scene {
     }
 
     update() {
-        // Reset della velocità del giocatore
         this.player.body.setVelocity(0);
 
-        // Movimento in base ai tasti premuti
         if (this.cursors.left.isDown || this.wasd.left.isDown) {
             this.player.body.setVelocityX(-this.moveSpeed);
         } else if (this.cursors.right.isDown || this.wasd.right.isDown) {
@@ -59,5 +58,4 @@ class MapScene extends Phaser.Scene {
         }
     }
 }
-
-export default MapScene;
+// Non usiamo più "export default MapScene;"
